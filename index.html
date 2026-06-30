@@ -1,1 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunil Devadiga — HR Operations & Compliance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16213E;
+    --paper:#FBF7EE;
+    --forest:#0B3D2E;
+    --forest-light:#15543F;
+    --coral:#FF6B4A;
+    --amber:#FFC857;
+    --teal:#2EC4B6;
+    --line: rgba(22,33,62,0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  .display{ font-family:'Space Grotesk', sans-serif; }
+  a{ color:inherit; }
 
+  ::selection{ background:var(--amber); color:var(--ink); }
+
+  /* ---------- layout shells ---------- */
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 32px; }
+  section{ position:relative; }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,247,238,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.01em; }
+  .nav-links{ display:flex; gap:28px; list-style:none; font-size:14px; }
+  .nav-links a{ text-decoration:none; color:var(--ink); opacity:0.7; transition:opacity .2s; position:relative;}
+  .nav-links a:hover{ opacity:1; }
+  .nav-links a:focus-visible, a:focus-visible{ outline:2px solid var(--forest); outline-offset:3px; border-radius:2px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:90px 0 70px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,107,74,0.16), transparent 45%),
+      radial-gradient(circle at 88% 12%, rgba(46,196,182,0.18), transparent 40%),
+      var(--paper);
+    overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--forest); margin-bottom:22px;
+  }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--coral); display:inline-block; }
+
+  .hero-grid{ display:grid; grid-template-columns: 1.5fr 1fr; gap:40px; align-items:center; }
+  h1.hero-title{
+    font-size:clamp(38px, 5.4vw, 64px);
+    line-height:1.04;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  h1.hero-title .accent{ color:var(--forest); }
+  h1.hero-title .accent2{
+    background:linear-gradient(95deg, var(--coral), var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top:22px; font-size:17px; max-width:520px; color:#3a4258;
+  }
+  .hero-cta{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14.5px;
+    padding:13px 22px; border-radius:8px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    border:1.5px solid var(--ink); transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-solid{ background:var(--forest); color:var(--paper); border-color:var(--forest); }
+  .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 8px 0 -2px rgba(11,61,46,0.25); }
+  .btn-ghost:hover{ transform:translateY(-2px); box-shadow:0 8px 0 -2px rgba(22,33,62,0.18); }
+
+  /* stamp signature element */
+  .stamp-wrap{ display:flex; justify-content:center; align-items:center; }
+  .stamp{
+    width:206px; height:206px; border-radius:50%;
+    border:3px dashed var(--forest);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    animation: spin 38s linear infinite;
+    flex-shrink:0;
+  }
+  .stamp-core{
+    width:160px; height:160px; border-radius:50%;
+    background:var(--forest); color:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; transform:rotate(-12deg);
+    box-shadow: inset 0 0 0 2px rgba(251,247,238,0.25);
+  }
+  .stamp-core .verified{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; letter-spacing:0.04em; }
+  .stamp-core .sub{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; margin-top:6px; opacity:0.85; }
+  .stamp-core .id{ font-family:'JetBrains Mono',monospace; font-size:9.5px; margin-top:10px; opacity:0.6; }
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){ .stamp{ animation:none; } }
+
+  /* ---------- section heading w/ doc-tab numbering ---------- */
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:34px; }
+  .sec-num{
+    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--coral);
+    background:rgba(255,107,74,0.12); padding:4px 9px; border-radius:5px;
+  }
+  .sec-title{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; letter-spacing:-0.01em; }
+
+  section.block{ padding:78px 0; border-top:1px solid var(--line); }
+
+  /* ---------- about ---------- */
+  .about-text{ font-size:16.5px; max-width:760px; color:#33394d; }
+  .about-text strong{ color:var(--ink); }
+
+  /* ---------- skills ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  .skill-card{
+    border:1px solid var(--line); border-radius:12px; padding:22px 20px;
+    background:#fff; transition:transform .18s ease, border-color .18s ease;
+  }
+  .skill-card:hover{ transform:translateY(-4px); border-color:var(--forest); }
+  .skill-card h3{
+    font-family:'Space Grotesk',sans-serif; font-size:15px; margin-bottom:14px;
+    display:flex; align-items:center; gap:9px;
+  }
+  .dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .dot.c1{ background:var(--coral); } .dot.c2{ background:var(--teal); } .dot.c3{ background:var(--amber); }
+  .skill-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .skill-card li{ font-size:13.5px; color:#454c63; padding-left:14px; position:relative; }
+  .skill-card li::before{ content:"—"; position:absolute; left:0; color:var(--forest); opacity:0.5; }
+
+  /* ---------- experience timeline ---------- */
+  .tl-item{ display:grid; grid-template-columns:160px 1fr; gap:28px; padding:28px 0; border-bottom:1px solid var(--line); }
+  .tl-item:last-child{ border-bottom:none; }
+  .tl-date{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--forest); padding-top:3px; }
+  .tl-role{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18.5px; margin-bottom:2px; }
+  .tl-org{ font-size:13.5px; color:var(--coral); font-weight:600; margin-bottom:14px; }
+  .tl-list{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .tl-list li{ font-size:14.5px; color:#3a4258; padding-left:18px; position:relative; }
+  .tl-list li::before{ content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--teal); }
+
+  /* ---------- projects ---------- */
+  .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .proj-card{
+    border-radius:14px; padding:26px; background:var(--forest); color:var(--paper);
+    position:relative; overflow:hidden;
+  }
+  .proj-card.alt{ background:var(--ink); }
+  .proj-card::after{
+    content:""; position:absolute; right:-30px; bottom:-30px; width:140px; height:140px;
+    border-radius:50%; background:radial-gradient(circle, rgba(255,200,87,0.25), transparent 70%);
+  }
+  .proj-tag{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.65; margin-bottom:10px; display:block;}
+  .proj-card h3{ font-family:'Space Grotesk',sans-serif; font-size:18px; margin-bottom:10px; line-height:1.3; }
+  .proj-card p{ font-size:13.5px; opacity:0.85; }
+
+  /* ---------- education ---------- */
+  .edu-item{ display:flex; justify-content:space-between; align-items:flex-start; padding:20px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:6px;}
+  .edu-item:last-child{ border-bottom:none; }
+  .edu-school{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16.5px; }
+  .edu-deg{ font-size:13.5px; color:#3a4258; margin-top:3px; }
+  .edu-meta{ text-align:right; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--forest); }
+
+  /* ---------- languages ---------- */
+  .lang-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .lang-pill{
+    font-family:'JetBrains Mono',monospace; font-size:13px; padding:9px 16px; border-radius:30px;
+    border:1px solid var(--line); background:#fff;
+  }
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    background:var(--ink); color:var(--paper); padding:70px 0 40px; margin-top:30px;
+  }
+  .footer-title{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; max-width:560px; }
+  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:28px; margin-top:30px;}
+  .contact-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .contact-list a{ text-decoration:none; font-size:14.5px; opacity:0.85; transition:opacity .15s; }
+  .contact-list a:hover{ opacity:1; color:var(--amber); }
+  .footer-bottom{ margin-top:50px; padding-top:22px; border-top:1px solid rgba(251,247,238,0.15); font-size:12px; opacity:0.5; font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .stamp-wrap{ order:-1; margin-bottom:10px; }
+    .stamp{ width:150px; height:150px; }
+    .stamp-core{ width:116px; height:116px; }
+    .skill-groups{ grid-template-columns:1fr; }
+    .proj-grid{ grid-template-columns:1fr; }
+    .tl-item{ grid-template-columns:1fr; gap:8px; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Sunil Devadiga</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Bengaluru, India · Open to opportunities</div>
+      <h1 class="hero-title">Keeping US HR <span class="accent">compliant</span>,<br> <span class="accent2">audit-ready</span> & on schedule.</h1>
+      <p class="hero-sub">I'm Sunil — an HR Operations associate who runs onboarding, I-9/E-Verify compliance, and background verification for US hires, backed by three years of regulatory rigor from mortgage servicing before that.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#experience">View experience</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <div class="stamp">
+        <div class="stamp-core">
+          <span class="verified">VERIFIED</span>
+          <span class="sub">HR OPERATIONS</span>
+          <span class="id">EST. 2021 · BLR-IN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">About</h2></div>
+    <p class="about-text">I'm a <strong>detail-oriented HR Operations professional</strong> with an MBA in Finance and Human Resource Management. At <strong>Pride Global LLC</strong>, I manage end-to-end onboarding, I-9 and USCIS E-Verify compliance, and background investigations for US-based hires, coordinating across ABLE, HireRight, Launch VMS, and JobDiva. Before that, at <strong>Cognizant Technology Solutions</strong>, I administered property tax disbursement, lien resolution, and delinquency processing across multiple US counties, working within state-specific regulatory frameworks. What ties both roles together: keeping documentation audit-ready, resolving compliance exceptions, and being the dependable link between stakeholders who all need the same record to be correct.</p>
+  </div>
+</section>
+
+<section class="block reveal" id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Core Skills</h2></div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3><span class="dot c1"></span>HR Operations</h3>
+        <ul>
+          <li>Onboarding & offboarding</li>
+          <li>I-9 & USCIS E-Verify compliance</li>
+          <li>Employment verification & documentation</li>
+          <li>EEOC & state tax form processing</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot c2"></span>Systems & Platforms</h3>
+        <ul>
+          <li>ABLE, Launch VMS, JobDiva</li>
+          <li>HireRight, Crimcheck, DISA</li>
+          <li>Docebo LMS administration</li>
+          <li>Background check administration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot c3"></span>Compliance & Finance</h3>
+        <ul>
+          <li>Federal & state regulatory compliance</li>
+          <li>US mortgage servicing</li>
+          <li>Lien & delinquency resolution</li>
+          <li>Audit-ready recordkeeping</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Experience</h2></div>
+
+    <div class="tl-item">
+      <div class="tl-date">JAN 2025 —<br>PRESENT</div>
+      <div>
+        <div class="tl-role">Associate, US HR Operations</div>
+        <div class="tl-org">Pride Global LLC · Bengaluru</div>
+        <ul class="tl-list">
+          <li>Coordinate end-to-end onboarding for US new hires — offer letters, ABLE applicant profiles, and workflow initiation.</li>
+          <li>Manage compliance documentation across W-4, state tax forms, EEOC forms, I-9, direct deposit, and employment agreements.</li>
+          <li>Own I-9 and USCIS E-Verify compliance, resolving system errors through manual verification.</li>
+          <li>Act as the liaison between legal, IT, and business unit heads for agreement signing and IT access setup.</li>
+          <li>Process manual background checks via HireRight, Crimcheck, and DISA where automation falls short.</li>
+          <li>Maintain audit-ready New Hire, EEOC, I-9, and background check records for internal audits.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">MAR 2021 —<br>FEB 2023</div>
+      <div>
+        <div class="tl-role">Senior Process Executive</div>
+        <div class="tl-org">Cognizant Technology Solutions · Mangalore</div>
+        <ul class="tl-list">
+          <li>Managed disbursement of property tax payments across multiple US counties, ensuring jurisdictional compliance.</li>
+          <li>Processed lien, sewage, and assessment payments while maintaining county-specific accuracy.</li>
+          <li>Calculated penalties, interest, and redemption fees on delinquent property taxes per county guidelines.</li>
+          <li>Facilitated installment plans aligned with frameworks like California's Revenue & Taxation Code.</li>
+          <li>Coordinated tax lien/deed sale payments and supported redemption to protect property ownership.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Academic Projects</h2></div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-tag">MBA Internship · 2024</span>
+        <h3>The Role of Technology in Transforming Recruitment Practices</h3>
+        <p>Researched how Quess Corp Ltd. uses AI and automation to streamline candidate sourcing and improve recruitment efficiency.</p>
+      </div>
+      <div class="proj-card alt">
+        <span class="proj-tag">MBA Research · 2024</span>
+        <h3>Indian Stock Market & Buyer Behavior</h3>
+        <p>Analyzed the psychological and economic drivers shaping investor decisions and purchasing behavior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Education</h2></div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">Canara Bank School of Management Studies, Bangalore University</div>
+        <div class="edu-deg">MBA — Finance & Human Resource Management</div>
+      </div>
+      <div class="edu-meta">GPA 7.11/10.00<br>2023 – 2025</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">St. Xavier's College, Mumbai</div>
+        <div class="edu-deg">Bachelor of Commerce</div>
+      </div>
+      <div class="edu-meta">GPA 2.33/4.00<br>2017 – 2020</div>
+    </div>
+    <div style="margin-top:26px;">
+      <div class="lang-row">
+        <span class="lang-pill">English — Fluent</span>
+        <span class="lang-pill">Kannada — Fluent</span>
+        <span class="lang-pill">Hindi — Fluent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-title">Let's talk about your next US HR Operations hire.</div>
+    <div class="footer-grid">
+      <ul class="contact-list">
+        <li><a href="mailto:devadigasunil16@gmail.com">devadigasunil16@gmail.com</a></li>
+        <li><a href="tel:+918880054413">+91 88800 54413</a></li>
+        <li><a href="https://www.linkedin.com/in/sunil-devadiga-b925981b2/" target="_blank" rel="noopener">linkedin.com/in/sunil-devadiga</a></li>
+      </ul>
+      <div class="mono" style="font-size:12px; opacity:0.6;">Electronic City, Bengaluru<br>Karnataka 560100, India</div>
+    </div>
+    <div class="footer-bottom">© 2026 Sunil Devadiga — Built for HR Operations & Compliance roles.</div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
